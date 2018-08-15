@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TFSAdminDashboard.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TeamProject" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TestProject</Value>
+    </Setting>
+    <Setting Name="TFSUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://hqtfsprod:8080/tfs/south%20carolina%20dmv</Value>
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">bavanari_haribabu</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ChanduRaviRamu!3</Value>
+    </Setting>
+    <Setting Name="Domain" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DMVPHX</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
