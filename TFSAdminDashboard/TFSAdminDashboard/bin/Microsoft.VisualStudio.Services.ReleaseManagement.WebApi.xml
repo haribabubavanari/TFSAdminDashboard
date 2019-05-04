@@ -1,0 +1,1665 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.VisualStudio.Services.ReleaseManagement.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Change">
+            <summary>
+            Represents a change associated with a build.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Change.Id">
+            <summary>
+            Something that identifies the change. For a commit, this would be the SHA1. For a TFVC changeset, this would be the changeset id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Change.Message">
+            <summary>
+            A description of the change. This might be a commit message or changeset description.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Change.ChangeType">
+            <summary>
+            The type of change. "commit", "changeset", etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Change.Author">
+            <summary>
+            The author of the change.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Change.Timestamp">
+            <summary>
+            A timestamp for the change.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Change.Location">
+            <summary>
+            The location of the full representation of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Change.DisplayUri">
+            <summary>
+            The location of a user-friendly representation of the resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.EnvironmentExecutionPolicy">
+            <summary>
+            Defines policy on environment queuing at Release Management side queue.
+            We will send to Environment Runner [creating pre-deploy and other steps]
+                only when the policies mentioned are satisfied.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.EnvironmentExecutionPolicy.ConcurrencyCount">
+            <summary>
+            This policy decides, how many environments would be with Environment Runner.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.EnvironmentExecutionPolicy.QueueDepthCount">
+            <summary>
+            Queue depth in the EnvironmentQueue table, this table keeps the environment entries
+                till Environment Runner is free [as per it's policy] to take another environment 
+                for running.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ExecutionPoliciesConstants.ConcurrencyInfinite">
+            <summary>
+            No limit on environments in running state [being pre-deploy or any other step]
+                for a given definition environment at any point of time.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ExecutionPoliciesConstants.ConcurrencyOnlyOne">
+            <summary>
+            Only one environment can be in running state [being pre-deploy or any other step]
+                for a given definition environment at any point of time.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ExecutionPoliciesConstants.QueueDepthInfinite">
+            <summary>
+            No limit on environments that could be queued.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ExecutionPoliciesConstants.QueueDepthLastReleaseOnly">
+            <summary>
+            Only last environment will be kept in queue till Environment Runner is freed up as per the policy
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.RepositoryCleanOptions.Source" -->
+        <!-- Badly formed XML comment ignored for member "F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.RepositoryCleanOptions.SourceAndOutputDir" -->
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.RepositoryCleanOptions.SourceDir">
+            <summary>
+            Re-create $(build.sourcesDirectory)
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.RepositoryCleanOptions.AllBuildDir">
+            <summary>
+            Re-create $(agnet.buildDirectory) which contains $(build.sourcesDirectory), $(build.binariesDirectory) and any folders that left from previous build.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionDeployStep.Tasks">
+            <summary>
+            The list of steps for this definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClient2.GetApprovalsAsync2(System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ApprovalStatus},System.Collections.Generic.IEnumerable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ApprovalType},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="assignedToFilter"></param>
+            <param name="statusFilter"></param>
+            <param name="releaseIdsFilter"></param>
+            <param name="typeFilter"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="queryOrder"></param>
+            <param name="includeMyGroupApprovals"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClient2.GetDeploymentsAsync2(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentStatus},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentOperationStatus},System.Nullable{System.Boolean},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="definitionEnvironmentId"></param>
+            <param name="createdBy"></param>
+            <param name="minModifiedTime"></param>
+            <param name="maxModifiedTime"></param>
+            <param name="deploymentStatus"></param>
+            <param name="operationStatus"></param>
+            <param name="latestAttemptsOnly"></param>
+            <param name="queryOrder"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClient2.GetReleasesAsync2(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseStatus},System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseExpands},System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="definitionEnvironmentId"></param>
+            <param name="searchText"></param>
+            <param name="createdBy"></param>
+            <param name="statusFilter"></param>
+            <param name="environmentStatusFilter"></param>
+            <param name="minCreatedTime"></param>
+            <param name="maxCreatedTime"></param>
+            <param name="queryOrder"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="expand"></param>
+            <param name="artifactTypeId"></param>
+            <param name="sourceId"></param>
+            <param name="artifactVersionId"></param>
+            <param name="sourceBranchFilter"></param>
+            <param name="isDeleted"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.RMHttpClient.GetConsumerAsync(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="consumerId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.RMHttpClient.GetConsumersAsync(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseCompatHttpClientBase.GetReleaseDefinitionsAsync(System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionExpands},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="searchText"></param>
+            <param name="expand"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseCompatHttpClientBase.GetReleaseDefinitionsAsync(System.Guid,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionExpands},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="searchText"></param>
+            <param name="expand"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseCompatHttpClientBase.GetQueuedReleasesAsync(System.String,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Returns throttled queue as per the task hub license of parallel releases
+            </summary>
+            <param name="projectId"></param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetAgentArtifactDefinitionsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Returns the artifact details that automation agent requires
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetAgentArtifactDefinitionsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Returns the artifact details that automation agent requires
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetApprovalHistoryAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="approvalStepId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetApprovalHistoryAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="approvalStepId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetApprovalAsync(System.String,System.Int32,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="approvalId"></param>
+            <param name="includeHistory"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetApprovalAsync(System.Guid,System.Int32,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="approvalId"></param>
+            <param name="includeHistory"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseApprovalAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseApproval,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="approval"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="approvalId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseApprovalAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseApproval,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="approval"></param>
+            <param name="project">Project ID</param>
+            <param name="approvalId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetApprovalsAsync(System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ApprovalStatus},System.Collections.Generic.IEnumerable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ApprovalType},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="assignedToFilter"></param>
+            <param name="statusFilter"></param>
+            <param name="releaseIdsFilter"></param>
+            <param name="typeFilter"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="queryOrder"></param>
+            <param name="includeMyGroupApprovals"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetApprovalsAsync(System.Guid,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ApprovalStatus},System.Collections.Generic.IEnumerable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ApprovalType},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="assignedToFilter"></param>
+            <param name="statusFilter"></param>
+            <param name="releaseIdsFilter"></param>
+            <param name="typeFilter"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="queryOrder"></param>
+            <param name="includeMyGroupApprovals"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseChangesAsync(System.String,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="baseReleaseId"></param>
+            <param name="top"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseChangesAsync(System.Guid,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="baseReleaseId"></param>
+            <param name="top"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.SetupContinuousDeploymentAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ContinuousDeploymentSetupData,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="configData"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.SetupContinuousDeploymentAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ContinuousDeploymentSetupData,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="configData"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateReleaseDefinitionAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseDefinition,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="releaseDefinition"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateReleaseDefinitionAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseDefinition,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="releaseDefinition"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteReleaseDefinitionAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteReleaseDefinitionAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionRevisionAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="revision"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionRevisionAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="revision"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionsAsync(System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionExpands},System.String,System.String,System.Nullable{System.Int32},System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionQueryOrder},System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="searchText"></param>
+            <param name="expand"></param>
+            <param name="artifactType"></param>
+            <param name="artifactSourceId"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="queryOrder"></param>
+            <param name="path"></param>
+            <param name="isExactNameMatch"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionsAsync(System.Guid,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionExpands},System.String,System.String,System.Nullable{System.Int32},System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionQueryOrder},System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="searchText"></param>
+            <param name="expand"></param>
+            <param name="artifactType"></param>
+            <param name="artifactSourceId"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="queryOrder"></param>
+            <param name="path"></param>
+            <param name="isExactNameMatch"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionsForArtifactSourceAsync(System.String,System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionExpands},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="artifactType"></param>
+            <param name="artifactSourceId"></param>
+            <param name="expand"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionsForArtifactSourceAsync(System.Guid,System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionExpands},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="artifactType"></param>
+            <param name="artifactSourceId"></param>
+            <param name="expand"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseDefinitionAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseDefinition,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="releaseDefinition"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseDefinitionAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseDefinition,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="releaseDefinition"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetDeploymentsAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentStatus},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentOperationStatus},System.Nullable{System.Boolean},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="definitionEnvironmentId"></param>
+            <param name="createdBy"></param>
+            <param name="minModifiedTime"></param>
+            <param name="maxModifiedTime"></param>
+            <param name="deploymentStatus"></param>
+            <param name="operationStatus"></param>
+            <param name="latestAttemptsOnly"></param>
+            <param name="queryOrder"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetDeploymentsAsync(System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentStatus},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentOperationStatus},System.Nullable{System.Boolean},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="definitionEnvironmentId"></param>
+            <param name="createdBy"></param>
+            <param name="minModifiedTime"></param>
+            <param name="maxModifiedTime"></param>
+            <param name="deploymentStatus"></param>
+            <param name="operationStatus"></param>
+            <param name="latestAttemptsOnly"></param>
+            <param name="queryOrder"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetDeploymentsForMultipleEnvironmentsAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentQueryParameters,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="queryParameters"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetDeploymentsForMultipleEnvironmentsAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentQueryParameters,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="queryParameters"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseEnvironmentAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseEnvironmentAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseEnvironmentAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseEnvironmentUpdateMetadata,System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="environmentUpdateData"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseEnvironmentAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseEnvironmentUpdateMetadata,System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="environmentUpdateData"></param>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateDefinitionEnvironmentTemplateAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionEnvironmentTemplate,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="template"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateDefinitionEnvironmentTemplateAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseDefinitionEnvironmentTemplate,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="template"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteDefinitionEnvironmentTemplateAsync(System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="templateId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteDefinitionEnvironmentTemplateAsync(System.Guid,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="templateId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetDefinitionEnvironmentTemplateAsync(System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="templateId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetDefinitionEnvironmentTemplateAsync(System.Guid,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="templateId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.ListDefinitionEnvironmentTemplatesAsync(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.ListDefinitionEnvironmentTemplatesAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateFavoritesAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FavoriteItem},System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="favoriteItems"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="scope"></param>
+            <param name="identityId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateFavoritesAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FavoriteItem},System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="favoriteItems"></param>
+            <param name="project">Project ID</param>
+            <param name="scope"></param>
+            <param name="identityId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteFavoritesAsync(System.String,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="scope"></param>
+            <param name="identityId"></param>
+            <param name="favoriteItemIds"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteFavoritesAsync(System.Guid,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="scope"></param>
+            <param name="identityId"></param>
+            <param name="favoriteItemIds"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetFavoritesAsync(System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="scope"></param>
+            <param name="identityId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetFavoritesAsync(System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="scope"></param>
+            <param name="identityId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateFolderAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Folder,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Creates a new folder
+            </summary>
+            <param name="folder"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="path"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateFolderAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Folder,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Creates a new folder
+            </summary>
+            <param name="folder"></param>
+            <param name="project">Project ID</param>
+            <param name="path"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteFolderAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Deletes a definition folder for given folder name and path and all it's existing definitions
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="path"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteFolderAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Deletes a definition folder for given folder name and path and all it's existing definitions
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="path"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetFoldersAsync(System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FolderPathQueryOrder},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Gets folders
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="path"></param>
+            <param name="queryOrder"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetFoldersAsync(System.Guid,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FolderPathQueryOrder},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Gets folders
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="path"></param>
+            <param name="queryOrder"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateFolderAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Folder,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Updates an existing folder at given  existing path
+            </summary>
+            <param name="folder"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="path"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateFolderAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Folder,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Updates an existing folder at given  existing path
+            </summary>
+            <param name="folder"></param>
+            <param name="project">Project ID</param>
+            <param name="path"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseHistoryAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseHistoryAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetInputValuesAsync(Microsoft.VisualStudio.Services.FormInput.InputValuesQuery,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="query"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetInputValuesAsync(Microsoft.VisualStudio.Services.FormInput.InputValuesQuery,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="query"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetLogAsync(System.String,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="taskId"></param>
+            <param name="attemptId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetLogAsync(System.Guid,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="taskId"></param>
+            <param name="attemptId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetLogsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetLogsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetTaskLogAsync(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="releaseDeployPhaseId"></param>
+            <param name="taskId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetTaskLogAsync(System.Guid,System.Int32,System.Int32,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="releaseDeployPhaseId"></param>
+            <param name="taskId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetManualInterventionAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="manualInterventionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetManualInterventionAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="manualInterventionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetManualInterventionsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetManualInterventionsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateManualInterventionAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ManualInterventionUpdateMetadata,System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="manualInterventionUpdateMetadata"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="manualInterventionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateManualInterventionAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ManualInterventionUpdateMetadata,System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="manualInterventionUpdateMetadata"></param>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="manualInterventionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetMetricsAsync(System.String,System.Nullable{System.DateTime},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="minMetricsTime"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetMetricsAsync(System.Guid,System.Nullable{System.DateTime},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="minMetricsTime"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseProjectsAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="artifactType"></param>
+            <param name="artifactSourceId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleasesAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseStatus},System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseExpands},System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="definitionEnvironmentId"></param>
+            <param name="searchText"></param>
+            <param name="createdBy"></param>
+            <param name="statusFilter"></param>
+            <param name="environmentStatusFilter"></param>
+            <param name="minCreatedTime"></param>
+            <param name="maxCreatedTime"></param>
+            <param name="queryOrder"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="expand"></param>
+            <param name="artifactTypeId"></param>
+            <param name="sourceId"></param>
+            <param name="artifactVersionId"></param>
+            <param name="sourceBranchFilter"></param>
+            <param name="isDeleted"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleasesAsync(System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseStatus},System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseExpands},System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="definitionEnvironmentId"></param>
+            <param name="searchText"></param>
+            <param name="createdBy"></param>
+            <param name="statusFilter"></param>
+            <param name="environmentStatusFilter"></param>
+            <param name="minCreatedTime"></param>
+            <param name="maxCreatedTime"></param>
+            <param name="queryOrder"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="expand"></param>
+            <param name="artifactTypeId"></param>
+            <param name="sourceId"></param>
+            <param name="artifactVersionId"></param>
+            <param name="sourceBranchFilter"></param>
+            <param name="isDeleted"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleasesAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseStatus},System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseQueryOrder},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.ReleaseExpands},System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="definitionId"></param>
+            <param name="definitionEnvironmentId"></param>
+            <param name="searchText"></param>
+            <param name="createdBy"></param>
+            <param name="statusFilter"></param>
+            <param name="environmentStatusFilter"></param>
+            <param name="minCreatedTime"></param>
+            <param name="maxCreatedTime"></param>
+            <param name="queryOrder"></param>
+            <param name="top"></param>
+            <param name="continuationToken"></param>
+            <param name="expand"></param>
+            <param name="artifactTypeId"></param>
+            <param name="sourceId"></param>
+            <param name="artifactVersionId"></param>
+            <param name="sourceBranchFilter"></param>
+            <param name="isDeleted"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateReleaseAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseStartMetadata,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="releaseStartMetadata"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.CreateReleaseAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseStartMetadata,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="releaseStartMetadata"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteReleaseAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="comment"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.DeleteReleaseAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="comment"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseAsync(System.String,System.Int32,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="includeAllApprovals"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseAsync(System.Guid,System.Int32,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="includeAllApprovals"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionSummaryAsync(System.String,System.Int32,System.Int32,System.Nullable{System.Boolean},System.Collections.Generic.IEnumerable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="releaseCount"></param>
+            <param name="includeArtifact"></param>
+            <param name="definitionEnvironmentIdsFilter"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionSummaryAsync(System.Guid,System.Int32,System.Int32,System.Nullable{System.Boolean},System.Collections.Generic.IEnumerable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="releaseCount"></param>
+            <param name="includeArtifact"></param>
+            <param name="definitionEnvironmentIdsFilter"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseRevisionAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="definitionSnapshotRevision"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseRevisionAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="definitionSnapshotRevision"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UndeleteReleaseAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="comment"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UndeleteReleaseAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="comment"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Release,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="release"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Release,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="release"></param>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseResourceAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseUpdateMetadata,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="releaseUpdateMetadata"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseResourceAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseUpdateMetadata,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="releaseUpdateMetadata"></param>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseSettingsAsync(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseSettingsAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseSettingsAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseSettings,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Updates the release settings
+            </summary>
+            <param name="releaseSettings"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.UpdateReleaseSettingsAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseSettings,System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Updates the release settings
+            </summary>
+            <param name="releaseSettings"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetDefinitionRevisionAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="revision"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetDefinitionRevisionAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="revision"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionHistoryAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseDefinitionHistoryAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetSummaryMailSectionsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetSummaryMailSectionsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.SendSummaryMailAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.MailMessage,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="mailMessage"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.SendSummaryMailAsync(Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.MailMessage,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="mailMessage"></param>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetSourceBranchesAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="definitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetSourceBranchesAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="definitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetTasksAsync(System.String,System.Int32,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="attemptId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetTasksAsync(System.Guid,System.Int32,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="attemptId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetTasksForTaskGroupAsync(System.String,System.Int32,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="releaseDeployPhaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetTasksForTaskGroupAsync(System.Guid,System.Int32,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="environmentId"></param>
+            <param name="releaseDeployPhaseId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetArtifactTypeDefinitionsAsync(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetArtifactTypeDefinitionsAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetArtifactVersionsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseDefinitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetArtifactVersionsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseDefinitionId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetArtifactVersionsForSourcesAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Artifact},System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="artifacts"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetArtifactVersionsForSourcesAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Contracts.Artifact},System.Guid,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="artifacts"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseWorkItemsRefsAsync(System.String,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="releaseId"></param>
+            <param name="baseReleaseId"></param>
+            <param name="top"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Clients.ReleaseHttpClientBase.GetReleaseWorkItemsRefsAsync(System.Guid,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="releaseId"></param>
+            <param name="baseReleaseId"></param>
+            <param name="top"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ArtifactSourceTrigger.ArtifactAlias">
+            <summary>
+            Artifact source alias for Artifact Source trigger type
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FavoriteItem">
+            <summary>
+            Class to represent favorite entry 
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FavoriteItem.Id">
+            <summary>
+            Unique Id of the the entry
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FavoriteItem.Name">
+            <summary>
+            Display text for favorite entry
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FavoriteItem.Type">
+            <summary>
+            Application specific favorite entry type.
+            Empty or Null represents that Favorite item is a Folder
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FavoriteItem.Data">
+            <summary>
+            Application specific data for the entry
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.AdministerReleasePermissions">
+            <summary>
+              Looks up a localized string similar to administer release permissions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.CreateReleases">
+            <summary>
+              Looks up a localized string similar to create releases.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.DeleteReleaseDefinition">
+            <summary>
+              Looks up a localized string similar to delete release definition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.DeleteReleaseEnvironment">
+            <summary>
+              Looks up a localized string similar to delete release environment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.DeleteReleases">
+            <summary>
+              Looks up a localized string similar to delete releases.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.EditReleaseDefinition">
+            <summary>
+              Looks up a localized string similar to edit release definition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.EditReleaseEnvironment">
+            <summary>
+              Looks up a localized string similar to edit release environment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ManageDeployments">
+            <summary>
+              Looks up a localized string similar to manage deployments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ManageReleaseApprovers">
+            <summary>
+              Looks up a localized string similar to manage release approvers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ManageReleases">
+            <summary>
+              Looks up a localized string similar to manage releases.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ManageReleaseSettings">
+            <summary>
+              Looks up a localized string similar to manage releases.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ReleaseAdministratorsGroupName">
+            <summary>
+              Looks up a localized string similar to Release Administrators.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ReleaseManagersGroupName">
+            <summary>
+              Looks up a localized string similar to Release Managers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ViewReleaseDefinition">
+            <summary>
+              Looks up a localized string similar to view release definition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.Properties.Resources.ViewReleases">
+            <summary>
+              Looks up a localized string similar to view releases.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ScheduledReleaseTrigger.Schedule">
+            <summary>
+            Release schedule for Scheduled Release trigger type
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FolderPathQueryOrder" -->
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FolderPathQueryOrder.None">
+            <summary>
+            No order
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FolderPathQueryOrder.Ascending">
+            <summary>
+            Order by folder name and path ascending.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.FolderPathQueryOrder.Descending">
+            <summary>
+            Order by folder name and path descending.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentAttempt.HasStarted">
+            <summary>
+            The time at which the deployment started, and null if it has not been deployed yet
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.DeploymentAttempt.ErrorLog">
+            <summary>
+            Error log to show any unexpected error that occurred during executing deploy step
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseSchedule.JobId">
+            <summary>
+            Team Foundation Job Definition Job Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseSchedule.TimeZoneId">
+            <summary>
+            Time zone Id of release schedule, such as 'UTC'
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseSchedule.StartHours">
+            <summary>
+            Local time zone hour to start
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseSchedule.StartMinutes">
+            <summary>
+            Local time zone minute to start
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.ReleaseManagement.WebApi.ReleaseSchedule.DaysToRelease">
+            <summary>
+            Days of the week to release
+            </summary>
+        </member>
+    </members>
+</doc>

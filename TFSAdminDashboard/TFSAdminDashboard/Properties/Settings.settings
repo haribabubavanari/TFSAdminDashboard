@@ -1,0 +1,40 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TFSAdminDashboard.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TeamProject" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">South Carolina DMV</Value>
+    </Setting>
+    <Setting Name="TFSUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://hqtfsprod:8080/tfs/south%20carolina%20dmv</Value>
+    </Setting>
+    <Setting Name="Domain" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DMVPHX</Value>
+    </Setting>
+    <Setting Name="LocalFolderToMap" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\\Temp22\\ToolWS2</Value>
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TFSBuild</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">P3$WqIj15I8H</Value>
+    </Setting>
+    <Setting Name="TestSet" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Old</Value>
+    </Setting>
+    <Setting Name="ArchivedReleasesList" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;HF-27&lt;/string&gt;
+  &lt;string&gt;HF-28&lt;/string&gt;
+  &lt;string&gt;COBOL&lt;/string&gt;
+  &lt;string&gt;HF-31&lt;/string&gt;
+  &lt;string&gt;HF-30&lt;/string&gt;
+  &lt;string&gt;MR-272&lt;/string&gt;
+  &lt;string&gt;MR-273&lt;/string&gt;
+  &lt;string&gt;MR-100&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -3,3 +3,6 @@
 ################################################################################
 
 /TFSAdminDashboard/TFSAdminDashboard/Web.config
+/TFSAdminDashboard/TFSAdminDashboard/Web.Release.config
+/TFSAdminDashboard/TFSAdminDashboard/Web.Debug.config
+/TFSAdminDashboard/packages
